@@ -13,6 +13,6 @@ RUN pip install --upgrade pip
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-COPY venv /app
+COPY . /app
 
 CMD python _init_.py
