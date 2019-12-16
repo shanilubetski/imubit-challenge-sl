@@ -93,7 +93,7 @@ def whoCommand():
             print(user)
 
             date = user[len(user)-1]
-            name  = user[0]
+            name = user[0]
             address = user[2]
             terminal = user[1]
 
