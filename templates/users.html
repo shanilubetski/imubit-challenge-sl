@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1>Current users on {{ hostname }} server</h1>
+        {% for user in users %}
+        <div><p>{{ user.name }} logged onto {{ hostname }} {{ user.address }} {{ user.tty }} at {{ user.date }}</p></div>
+        {% endfor %}
+{% endblock %}

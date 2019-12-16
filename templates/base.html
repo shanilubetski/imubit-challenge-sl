@@ -1,0 +1,16 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} Imbuit Challenge by Shani Lubetski</title>
+        {% else %}
+        <title>Welcome to Imbuit Challenge by Shani Lubetski!</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Imbuit Challenge: <a href="/index">Home</a>
+        <a href="/whoCommand">Who Command</a>
+        <a href="/usersCommand">Users Command</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
