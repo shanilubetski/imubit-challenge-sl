@@ -1,45 +1,10 @@
 import os, pwd, subprocess
-from flask import Flask, session, redirect, url_for, escape, request, render_template
-#login_manager
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome'
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        # Gives user's home directory
-        userhome = os.path.expanduser('~')
-        usernameOS = os.path.split(userhome)[-1]
-        #usernameCommands = commands.getoutput("echo $(whoami)")
-        usernameCommands = subprocess.check_output("whoami").replace("\r\n", "")
-
-        print ("User's home Dir: " + userhome)
-        # Gives username by splitting path based on OS
-        print ("usernameOS: " + usernameOS)
-        print ("usernameCommands: " + usernameCommands)
-        session['usernameOS'] = usernameOS
-        session['usernameCmd'] = usernameCommands
-
-        return redirect(url_for('index'))
-
-    return '''
-        <form action="" method="post">
-            <p><input type=text name=username>
-            <p><input type=password name=password>
-            <p><input type=submit value=Login>
-        </form>
-    '''
-
-@app.route('/logout')
-def logout():
-    # remove the username from the session if it's there
-    session.pop('usernameOS', None)
-    session.pop('usernameCommands', None)
-    return redirect(url_for('index'))
-
+    return render_template('index.html')
 
 app.secret_key = 'secretlkjasfkjdsljksadljf'
 
